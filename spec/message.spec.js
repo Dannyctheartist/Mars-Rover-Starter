@@ -5,5 +5,25 @@ const Command = require('../command.js');
 //       However, do NOT edit the grading tests for any reason and make sure to un-comment out your code to get the autograder to pass.
 
 describe("Message class", function() {
+//Test 4
+    it("throws error if anme is NOT passed into the constructor as the first parameter", function() {
+    let instantiateMessage = function(){
+        new Message();
+};
+expect(instantiateMessage).toThrow(new Error("Name is required."));
+});
 
+
+//Test 5: Ensure the constructor sets the name property
+it("constructor sets name", function() {
+    let message = new Message("Test Message", []);
+    expect(message.name).toEqual("Test Message");
+});
+//Test 6: Ensure constructor sets the command property
+it("contains a commands array passed into the constructor as the 2nd argument", function() {
+    let commandsArray = [new Command('MOVE', 1200), new Command('STATUS_CHECK')];
+    let message = new Message("Test Message", commandsArray);
+
+    expect(message.commands).toEqual(commandsArray);
+});
 });
